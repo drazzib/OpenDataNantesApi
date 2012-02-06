@@ -1,12 +1,10 @@
 package fr.ybo.opendata.nantes.util;
 
-import fr.ybo.moteurcsv.adapter.AdapterCsv;
-import fr.ybo.moteurcsv.adapter.AdapterDouble;
-import fr.ybo.opendata.nantes.modele.Categorie;
-
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Locale;
+
+import fr.ybo.moteurcsv.adapter.AdapterCsv;
 
 /**
  * Adapteur pour les doubles avec une ",".

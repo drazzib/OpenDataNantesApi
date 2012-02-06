@@ -51,4 +51,13 @@ public enum StatutParking {
         }
         return null;
     }
+
+    /**
+     * Retourne l'identifiant du statut.
+     * 
+     * @return identifiant du statut.
+     */
+	public int getValue() {
+		return this.value;
+	}
 }

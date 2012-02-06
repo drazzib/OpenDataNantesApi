@@ -1,9 +1,12 @@
 package fr.ybo.opendata.nantes.modele;
 
-import fr.ybo.moteurcsv.adapter.AdapterDouble;
 import fr.ybo.moteurcsv.annotation.BaliseCsv;
 import fr.ybo.moteurcsv.annotation.FichierCsv;
-import fr.ybo.opendata.nantes.util.*;
+import fr.ybo.opendata.nantes.util.MyAdapteurDouble;
+import fr.ybo.opendata.nantes.util.MyAdapteurInt;
+import fr.ybo.opendata.nantes.util.MyCategorieAdapteur;
+import fr.ybo.opendata.nantes.util.MyThemeAdapteur;
+import fr.ybo.opendata.nantes.util.MyTypeAdapteur;
 
 /**
  * Classe représentant un équipement.

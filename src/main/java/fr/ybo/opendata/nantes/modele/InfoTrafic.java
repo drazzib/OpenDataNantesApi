@@ -1,12 +1,12 @@
 package fr.ybo.opendata.nantes.modele;
 
-import fr.ybo.opendata.nantes.sax.BaliseData;
-import fr.ybo.opendata.nantes.sax.BaliseType;
-import fr.ybo.opendata.nantes.sax.BaliseXml;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import fr.ybo.opendata.nantes.sax.BaliseData;
+import fr.ybo.opendata.nantes.sax.BaliseType;
+import fr.ybo.opendata.nantes.sax.BaliseXml;
 
 /**
  * Classe InfoTrafic.

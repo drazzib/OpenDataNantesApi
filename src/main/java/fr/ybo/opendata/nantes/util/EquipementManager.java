@@ -1,19 +1,22 @@
 package fr.ybo.opendata.nantes.util;
 
-import fr.ybo.moteurcsv.MoteurCsv;
-import fr.ybo.moteurcsv.MoteurCsv.InsertObject;
-import fr.ybo.opendata.nantes.modele.Equipement;
-import fr.ybo.opendata.nantes.modele.Parking;
-
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
+
+import fr.ybo.moteurcsv.MoteurCsv;
+import fr.ybo.moteurcsv.MoteurCsv.InsertObject;
+import fr.ybo.opendata.nantes.modele.Equipement;
+import fr.ybo.opendata.nantes.modele.Parking;
 
 /**
  * Manager des équipements.
@@ -24,11 +27,8 @@ public class EquipementManager {
      * Logger.
      */
     private static final Logger LOGGER = Logger.getLogger(EquipementManager.class.getSimpleName());
-
-    /**
-     * Instance du singletton.
-     */
-    private static EquipementManager instance;
+    
+    @Inject private static Provider<EquipementManager> equipementManagerProvider = null;
 
     /**
      * Fichier a chargé qui contient les données de Nantes Métropole sous licence Open Database License (ODbL).
@@ -42,13 +42,11 @@ public class EquipementManager {
     private static final String CHARSET_NAME = "ISO-8859-15";
 
     /**
-     * @return l'instance du singletton.
+     * @deprecated Utilisation de l'injection
      */
+    @Deprecated
     public static synchronized EquipementManager getInstance() {
-        if (instance == null) {
-            instance = new EquipementManager();
-        }
-        return instance;
+        return equipementManagerProvider.get();
     }
 
     /**
@@ -85,7 +83,6 @@ public class EquipementManager {
     /**
      * @return {@link EquipementManager#mapEquipements}.
      */
-    @SuppressWarnings("unchecked")
     public Map<Integer, Equipement> getMapEquipements() {
         if (mapEquipements == null) {
             mapEquipements = new HashMap<Integer, Equipement>();
@@ -93,7 +90,7 @@ public class EquipementManager {
             BufferedReader bufferedReader = null;
             try {
                 bufferedReader = new BufferedReader(new InputStreamReader(
-                        EquipementManager.class.getResourceAsStream(EQUIPEMENTS_PUBLICS_DEPLACEMENT_CSV), CHARSET_NAME));
+                        getInputStream(), CHARSET_NAME));
                 try {
                     moteurCsv.parseFileAndInsert(bufferedReader, Equipement.class,
                             new EquipementInsertObject(mapEquipements));
@@ -111,6 +108,15 @@ public class EquipementManager {
         }
         return mapEquipements;
     }
+
+	/**
+	 * Ouverture du flux vers le fichier
+	 * 
+	 * @return InputStream du fichier ou null si introuvable
+	 */
+	protected InputStream getInputStream() {
+		return EquipementManager.class.getResourceAsStream(EQUIPEMENTS_PUBLICS_DEPLACEMENT_CSV);
+	}
     /**
      * Gestion des {@link Equipement}.
      */

@@ -20,8 +20,13 @@ import fr.ybo.opendata.nantes.modele.InfoTrafic;
 import fr.ybo.opendata.nantes.modele.Itineraire;
 import fr.ybo.opendata.nantes.modele.Parking;
 import fr.ybo.opendata.nantes.modele.StatutParking;
+import fr.ybo.opendata.nantes.util.EquipementManager;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import com.google.inject.AbstractModule;
+import com.google.inject.Guice;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -48,6 +53,12 @@ public class OpenDataApiTest {
      */
     @Before
     public void setup() {
+		Guice.createInjector(new AbstractModule() {
+			protected void configure() {
+				requestStaticInjection(EquipementManager.class);
+			}
+		});
+    	
         openDataApi = new OpenDataApi("key");
     }
 

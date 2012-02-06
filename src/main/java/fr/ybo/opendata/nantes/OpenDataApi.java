@@ -13,6 +13,22 @@
  */
 package fr.ybo.opendata.nantes;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.logging.Logger;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.xml.sax.SAXException;
+
 import fr.ybo.opendata.nantes.exceptions.ApiException;
 import fr.ybo.opendata.nantes.exceptions.ApiReseauException;
 import fr.ybo.opendata.nantes.modele.Answer;
@@ -25,18 +41,6 @@ import fr.ybo.opendata.nantes.sax.GenericHandler;
 import fr.ybo.opendata.nantes.util.Connecteur;
 import fr.ybo.opendata.nantes.util.EquipementManager;
 import fr.ybo.opendata.nantes.util.HttpConnecteur;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.logging.Logger;
 
 /**
  * Classe d'accés aux API OpenData de nantes.
@@ -63,7 +67,11 @@ public class OpenDataApi {
     /**
      * Connecteur.
      */
+    @Inject
     private Connecteur connecteur;
+    
+    @Inject
+	private EquipementManager equipementManager;
 
     /**
      * @param connecteur {@link OpenDataApi#connecteur}.
@@ -77,9 +85,11 @@ public class OpenDataApi {
      *
      * @param apiKey clé fournie par le site.
      */
-    public OpenDataApi(String apiKey) {
+    @Inject
+    public OpenDataApi(@Named("opendatanantes_key") String apiKey) {
         key = apiKey;
         connecteur = new HttpConnecteur();
+		equipementManager = EquipementManager.getInstance();
     }
 
     /**
@@ -116,7 +126,7 @@ public class OpenDataApi {
                 }
             }
         }
-        EquipementManager.getInstance().completeParkings(parkings);
+        equipementManager.completeParkings(parkings);
         return parkings;
     }
 

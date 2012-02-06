@@ -179,7 +179,19 @@
         <dependency>
             <groupId>fr.ybo</groupId>
             <artifactId>moteurcsv</artifactId>
-            <version>1.0.3</version>
+            <version>1.0.4-SNAPSHOT</version>
+        </dependency>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+        <dependency>
+        	<groupId>com.google.inject</groupId>
+        	<artifactId>guice</artifactId>
+        	<version>3.0</version>
+        	<classifier>no_aop</classifier>
+        	<scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -205,18 +217,18 @@
 
     <repositories>
         <repository>
-            <id>ybonnel-release</id>
-            <url>https://repository-ybonnel.forge.cloudbees.com/release/</url>
+            <id>drazzib-release</id>
+            <url>https://repository-drazzib.forge.cloudbees.com/release/</url>
         </repository>
     </repositories>
     <distributionManagement>
         <repository>
-            <id>ybonnel-release</id>
-            <url>https://repository-ybonnel.forge.cloudbees.com/release/</url>
+            <id>drazzib-release</id>
+            <url>https://repository-drazzib.forge.cloudbees.com/release/</url>
         </repository>
         <snapshotRepository>
-            <id>ybonnel-snapshot</id>
-            <url>https://repository-ybonnel.forge.cloudbees.com/snapshot/</url>
+            <id>drazzib-snapshot</id>
+            <url>https://repository-drazzib.forge.cloudbees.com/snapshot/</url>
         </snapshotRepository>
     </distributionManagement>
 </project>
