@@ -74,6 +74,14 @@ public enum Type {
 
     // Theme == DEPLACEMENT
 
+    SOUTERRAIN(100101, "Souterrain"),
+    ELEVATION(100102, "Elévation"),
+    MIXTE(100103, "Mixte"),
+    OUVRAGE(100201, "Ouvrage"),
+    ENCLOS(100202, "Enclos"),
+    LIBRE(100203, "Libre"),
+    BICLOO(100301, "Bicloo"),
+    MARGUERITE(100302, "Marguerite"),
     AERIEN(100401, "Aérien"),
     FLUVIAL(100402, "Fluvial"),
     RAIL(100403, "Rail"),

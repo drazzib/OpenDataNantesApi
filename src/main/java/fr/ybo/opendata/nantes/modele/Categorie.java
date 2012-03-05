@@ -90,9 +90,11 @@ public enum Categorie {
     // Theme == DEPLACEMENT
 
     PARKING(1001, "Parking"),
-    P_PLUS_R(1002, "Parking relais"),
-    BICLOO(1003, "Station Bicloo"),
+    PARKING_RELAIS(1002, "Parking relais"),
+    TRANSPORT_PART(1003, "Station Bicloo et Marguerite"),
     POI_TRANSPORT(1004, "Transport en commun"),
+    PARKING_ENCLOS(1005, "Parc en Enclos"),
+    COVOITURAGE(1006, "Aire de covoiturage"),
 
     // Theme == ACTION SOCIALE
 

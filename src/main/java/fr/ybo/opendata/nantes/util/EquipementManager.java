@@ -39,7 +39,7 @@ public class EquipementManager {
     /**
      * Encoding du fichier fournis par Nantes Métropole.
      */
-    private static final String CHARSET_NAME = "ISO-8859-15";
+    private static final String CHARSET_NAME = "UTF-8";
 
     /**
      * @deprecated Utilisation de l'injection
