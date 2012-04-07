@@ -70,7 +70,7 @@ public class OpenDataApiTest {
      */
     @Test
     public void testGetParkings() throws ApiReseauException, ParseException {
-        SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         openDataApi.setConnecteur(new FileConnecteur("/getDisponibiliteParkingsPublics.xml"));
 
         List<Parking> parkings = openDataApi.getParkings();
@@ -126,7 +126,7 @@ public class OpenDataApiTest {
         assertEquals("En raison de travaux rue Santos Dumont la ligne 96 est déviée le 22 et 23 novembre 2011.",
                 infoTrafic1.getResume());
         assertEquals(infoTrafic1.getResume(), infoTrafic1.getTexteVocal());
-        SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         assertEquals(formatDate.parse("22/11/2011 00:00"), infoTrafic1.getDateDebut());
         assertEquals(formatDate.parse("23/11/2011 23:59"), infoTrafic1.getDateFin());
         assertFalse(infoTrafic1.isTerminee());
@@ -156,7 +156,7 @@ public class OpenDataApiTest {
         assertEquals("En raison de travaux sur le Bd Marcel Paul les lignes de bus 73, 84 et 93 "
                 + "sont déviées dans les deux sens.", infoTrafic1.getResume());
         assertEquals(infoTrafic1.getResume(), infoTrafic1.getTexteVocal());
-        SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         assertEquals(formatDate.parse("28/10/2010 00:00"), infoTrafic1.getDateDebut());
         assertNull(infoTrafic1.getDateFin());
         assertFalse(infoTrafic1.isTerminee());
@@ -179,7 +179,7 @@ public class OpenDataApiTest {
     public void testGetTempsParcours() throws ApiReseauException, ParseException {
             openDataApi.setConnecteur(new FileConnecteur("/getTempsParcours.xml"));
 
-        SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         List<Itineraire> itineraires = openDataApi.getTempsParcours();
         assertEquals(2, itineraires.size());
         assertEquals("011", itineraires.get(0).getIdentifiant());

@@ -85,7 +85,7 @@ public class Itineraire {
     /**
      * Format de lastUpdate.
      */
-    private static final SimpleDateFormat SDF_DATE = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+    private static final SimpleDateFormat SDF_DATE = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
     /**
      * @param lastUpdate {@link Itineraire#lastUpdate}.

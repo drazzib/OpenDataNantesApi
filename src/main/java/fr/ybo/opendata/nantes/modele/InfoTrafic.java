@@ -121,7 +121,7 @@ public class InfoTrafic {
     /**
      * Format des heures.
      */
-    private static final SimpleDateFormat SDF_TIME = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+    private static final SimpleDateFormat SDF_TIME = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
     /**
      * @param dateDebut {@link InfoTrafic#dateDebut}.

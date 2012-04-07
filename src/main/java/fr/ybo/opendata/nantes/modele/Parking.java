@@ -189,7 +189,7 @@ public class Parking implements Serializable {
     /**
      * Format pour le champ Grp_horodatage.
      */
-    private static final SimpleDateFormat SDF_DATE = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+    private static final SimpleDateFormat SDF_DATE = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
     /**
      * @param lastUpdate {@link Parking#lastUpdate}.
