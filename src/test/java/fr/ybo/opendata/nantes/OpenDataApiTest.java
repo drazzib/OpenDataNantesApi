@@ -16,10 +16,7 @@ package fr.ybo.opendata.nantes;
 
 
 import fr.ybo.opendata.nantes.exceptions.ApiReseauException;
-import fr.ybo.opendata.nantes.modele.InfoTrafic;
-import fr.ybo.opendata.nantes.modele.Itineraire;
-import fr.ybo.opendata.nantes.modele.Parking;
-import fr.ybo.opendata.nantes.modele.StatutParking;
+import fr.ybo.opendata.nantes.modele.*;
 import fr.ybo.opendata.nantes.util.EquipementManager;
 
 import org.junit.Before;
@@ -194,6 +191,15 @@ public class OpenDataApiTest {
      * Temps de parcours.
      */
     private static final int TEMPS_PARCOURS = 11;
+
+    @Test
+    public void testGetCityCenterSegmentsFluency() throws ApiReseauException, ParseException {
+        openDataApi.setConnecteur(new FileConnecteur("/getFluiditeAxesRoutiers.xml"));
+        List<SegmentFluency> segmentsFluencies = openDataApi.getCityCenterSegmentsFluencies();
+        assertTrue(segmentsFluencies.size() > 0);
+        assertEquals(13, segmentsFluencies.get(0).getId());
+        assertEquals(2, segmentsFluencies.get(0).getColorId());
+    }
 
     /**
      * Test en passant vraiment pas la couche http.
