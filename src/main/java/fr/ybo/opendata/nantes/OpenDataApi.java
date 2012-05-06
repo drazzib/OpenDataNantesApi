@@ -35,6 +35,7 @@ import fr.ybo.opendata.nantes.modele.Answer;
 import fr.ybo.opendata.nantes.modele.InfoTrafic;
 import fr.ybo.opendata.nantes.modele.Itineraire;
 import fr.ybo.opendata.nantes.modele.Parking;
+import fr.ybo.opendata.nantes.modele.SegmentFluency;
 import fr.ybo.opendata.nantes.modele.StatutParking;
 import fr.ybo.opendata.nantes.sax.ApiHandler;
 import fr.ybo.opendata.nantes.sax.GenericHandler;
@@ -96,6 +97,22 @@ public class OpenDataApi {
      * Clé de l'api.
      */
     private final String key;
+    
+    /**
+     * Commande pour récupérer la fluidité des axes routier
+     */
+    private static final String CMD_SEGMENT_FLUENCY = "getFluiditeAxesRoutiers";
+
+    /**
+     * Cette commande permet de récupérer la fluidité des axes routiers du centre ville Nantais en temps réel.
+     *
+     * @return la fludité des axes routiers du centre ville de Nantes
+     * @throws fr.ybo.opendata.nantes.exceptions.ApiReseauException
+     *          problème réseaux.
+     */
+    public List<SegmentFluency> getCityCenterSegmentsFluencies() throws ApiReseauException {
+        return appelApi(getUrl(CMD_SEGMENT_FLUENCY), new GenericHandler<SegmentFluency>(SegmentFluency.class));
+    }
 
     /**
      * Commande pour récupérer les parkings.
